@@ -25,3 +25,8 @@ debug_*.xml
 # dados_nota.json
 
 nfse_contabilidade.json
+
+# Journal e artefatos do fluxo municipal controlado
+operacoes_fiscais/
+*.pfx
+*.pem

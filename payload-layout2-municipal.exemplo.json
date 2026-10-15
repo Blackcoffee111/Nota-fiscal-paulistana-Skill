@@ -1,0 +1,32 @@
+{
+  "numero_rps": "123",
+  "data_emissao": "2026-10-12",
+  "valor_deducoes": "0.00",
+  "valor_ipi": "0.00",
+  "iss_retido": false,
+  "documento_tomador": "00000000000",
+  "discriminacao": "EXEMPLO FICTÍCIO PARA VALIDAÇÃO LOCAL — NÃO É NOTA FISCAL",
+  "retencoes": {
+    "pis": "0.00",
+    "cofins": "0.00",
+    "inss": "0.00",
+    "ir": "0.00",
+    "csll": "0.00"
+  },
+  "ibscbs": {
+    "cClassTrib": "200029",
+    "cClassTribReg": null,
+    "cIndOp": "030104",
+    "NBS": "123012200",
+    "prestacao": "pais",
+    "cLocPrestacao": "3550308",
+    "cPaisPrestacao": null,
+    "indFinal": 0,
+    "finNFSe": 0,
+    "tpOper": null,
+    "NCM": null,
+    "ExigibilidadeSuspensa": 0,
+    "indDest": 0
+  },
+  "valor_final_cobrado": "100.00"
+}

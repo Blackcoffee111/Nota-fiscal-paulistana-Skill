@@ -1,0 +1,3 @@
+# Preserve official/preview XSD bytes, including vendor line endings and whitespace.
+schemas/official/*.xsd -text -whitespace
+schemas/preview/*.xsd -text -whitespace

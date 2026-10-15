@@ -1,0 +1,80 @@
+{
+  "certificado": "MEUCertificado.p12",
+  "senha_certificado": "",
+  "cnpj_prestador": "00000000000191",
+  "inscricao_municipal": "12345678",
+  "codigo_servico": "04017",
+  "aliquota_servicos": 0.02,
+  "tributacao_rps": "T",
+  "serie_rps": "A",
+  "retencoes_federais": {
+    "ir": 1.5,
+    "pis": 0.65,
+    "cofins": 3.0,
+    "csll": 1.0,
+    "inss": 0.0
+  },
+  "limites_retencao": {
+    "irrf": 10.0,
+    "csrf": 10.0
+  },
+  "pcc_2026": {
+    "habilitado": true,
+    "_comentario": "Regras de PIS/COFINS/CSLL da Prefeitura SP a partir de 2026 (regime PCC/CRF). ValorPIS e ValorCOFINS passam a ser DÉBITOS PRÓPRIOS (sempre preenchidos). ValorCSLL passa a ser a SOMA das retenções PIS+COFINS+CSLL (apenas quando retidas). Novo campo TipoRetencao identifica o tipo (0=não retido, 3=todos retidos, etc).",
+    "regime_tributario": "lucro_presumido",
+    "debito_proprio": {
+      "pis": 0.65,
+      "cofins": 3.0,
+      "_referencia": "Lucro Presumido: PIS 0,65% / COFINS 3%. Lucro Real: PIS 1,65% / COFINS 7,6%."
+    },
+    "retencao_pcc_total": 4.65,
+    "emitir_tipo_retencao": false,
+    "_emitir_tipo_retencao_doc": "MANTER false. Investigacao de 07/06/2026 confirmou que o webservice legado de SP (lotenfe.asmx) NAO possui campo de tipo de retencao no schema (mapa: ValorCSLL > CodigoServico > AliquotaServicos). A Prefeitura infere o tipo a partir de ValorCSLL > 0. O campo so existe na emissao online (portal) e no padrao Nacional gov.br (tpRetPisCofins, regido pela NT 007/2026 que nao afeta SP). Ligar esta flag causa erro 1001. Ver SP_PCC_2026.md secao 7.",
+    "_codigos_tipo_retencao": {
+      "0": "PIS/COFINS/CSLL Nao Retidos",
+      "3": "PIS/COFINS/CSLL Retidos",
+      "4": "PIS/COFINS Retidos, CSLL Nao Retido",
+      "5": "PIS Retido, COFINS/CSLL Nao Retidos",
+      "6": "COFINS Retido, PIS/CSLL Nao Retidos",
+      "7": "PIS Nao Retido, COFINS/CSLL Retidos",
+      "8": "PIS/COFINS Nao Retidos, CSLL Retido",
+      "9": "COFINS Nao Retido, PIS/CSLL Retidos"
+    }
+  },
+  "mensagem_padrao": "",
+  "ibscbs": {
+    "_comentario": "Layout 2 (Reforma Tributaria 2026) usado por emitir_nfse_v2.py. Campos do grupo IBSCBS conforme TiposNFe_v02.xsd.",
+    "fin_nfse": 0,
+    "ind_final": 0,
+    "ind_dest": 0,
+    "c_ind_op": "030101",
+    "cclasstrib": "200029",
+    "nbs": "123012200",
+    "_CONFIRMAR_COM_CONTADOR": "Valores preenchidos para MEDICINA (item 04.01 LC 116), conforme tabela oficial AnexoVIII (schemas_oficiais_sp/). Validado contra homologacao SP em 07/06/2026 (sucesso=true). c_ind_op=030101 (local da prestacao); cclasstrib=200029 (saude humana Anexo III, com reducao de aliquota); nbs=123012200 (servicos medicos especializados, NBS 1.2301.22.00). CONFIRME com o contador se o item correto e 04.01 (Medicina) ou outro (04.03 clinica, 04.08 fisio/fono, etc) pois o NBS muda conforme a especialidade.",
+    "aliquota_cbs_2026": 0.009,
+    "aliquota_ibs_2026": 0.001
+  },
+  "campos_layout_2": {
+    "cClassTrib": "200029",
+    "cClassTribReg": null,
+    "cIndOp": "030104",
+    "NBS": "123012200",
+    "prestacao": "pais",
+    "cLocPrestacao": "3550308",
+    "cPaisPrestacao": null,
+    "indFinal": 0,
+    "finNFSe": 0,
+    "tpOper": null,
+    "NCM": null,
+    "ExigibilidadeSuspensa": 0,
+    "indDest": 0
+  },
+  "layout2_municipal": {
+    "provedor": "prefeitura_sp",
+    "versao_schema": 2,
+    "endpoint": "https://nfews.prefeitura.sp.gov.br/lotenfe.asmx",
+    "metodo_teste": "TesteEnvioLoteRPS",
+    "metodo_producao": "EnvioLoteRPS",
+    "envio_habilitado": false
+  }
+}

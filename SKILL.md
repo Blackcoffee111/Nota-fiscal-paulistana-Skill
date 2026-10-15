@@ -1,10 +1,19 @@
 ---
+name: nota-fiscal-paulistana
 description: Faturamento NFS-e SP (Emissão e Cancelamento de Notas Fiscais em São Paulo)
 ---
 
 <!-- Discriminação padrão: SERVIÇOS PRESTADOS PELOS PRÓPRIOS SÓCIOS NO EXERCÍCIO DE PROFISSÃO REGULAMENTADA POR LEGISLAÇÃO FEDERAL, ISENTO DA RETENÇÃO DO INSS CONFORME PREVISTO NO ART. 120, INCISO III, § 2º DA IN/RFB Nº 971/2009. -->
 
 # Habilidade de Faturamento NFS-e SP (OpenClaw)
+
+## Fluxo municipal v2 com produção controlada
+
+Para rascunho sem rede, use `previsualizar_nfse_municipal.py`. Para teste remoto ou emissão municipal sob autorização, use a entrada separada `emitir_nfse_municipal.py`, conforme [VALIDACAO_MUNICIPAL_V2.md](VALIDACAO_MUNICIPAL_V2.md). Produção é opt-in na configuração local, exige `--modo producao`, arquivo explícito e `id_operacao` estável; inclui consulta de RPS, journal, locks e confirmação independente. `--dry-run` nunca envia, e `--modo teste` nunca gera nota.
+
+Para conferir a política e o próximo RPS sem emitir, execute `python {baseDir}/emitir_nfse_municipal.py --status`. Não inferir MAINTENANCE_LOCK a partir do histórico, de --dry-run ou de frases adicionadas por print/echo.
+
+Esse fluxo não substitui nem bloqueia os emissores/cancelador legados. Sua configuração de produção e seu journal são locais e não devem ser publicados. Ativar a capacidade não autoriza emitir rascunhos antigos ou retomar automações. Consulte a seção de produção controlada antes de qualquer operação real ou recuperação após timeout.
 
 Esta skill permite ao agente **emitir, cancelar e consultar** Notas Fiscais de Serviço eletrônicas (NFS-e) da Prefeitura de São Paulo, conversando com o usuário em português.
 
